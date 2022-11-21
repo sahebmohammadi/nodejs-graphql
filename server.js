@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const utils = require("./utils");
 const { graphqlHTTP } = require("express-graphql");
-const { buildSchema } = require("graphql");
+const schema = require("./graphql/schema");
 
 const app = express();
 dotenv.config();
@@ -16,13 +16,10 @@ app.use(express.urlencoded({ extended: true })); // parses application/
 app.use("/api/inventory", inventoryRouter);
 app.use("/api/product", productRouter);
 
-
-
 app.use(
   "/graphql",
   graphqlHTTP({
     schema: schema,
-    rootValue: root,
     graphiql: true,
   })
 );
