@@ -34,9 +34,5 @@ const productsData = [
   },
 ];
 
-router.get("/seed", async (req, res) => {
-  await Product.insertMany(productsData);
-  return res.send(productsData);
-});
 
 module.exports = router;

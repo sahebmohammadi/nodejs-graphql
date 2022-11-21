@@ -10,31 +10,6 @@ const inventoryData = [
   { item: "postcard", qty: 45, tags: ["blue"], dim_cm: [10, 15.25] },
 ];
 
-router.get("/seed", (req, res) => {
-  const data = Inventory.insertMany(inventoryData);
-  return res.send(inventoryData);
-});
 
-//? exact match : 1.order 2. and exact value is regarded
-
-router.get("/exact", async (req, res) => {
-  const data = await Inventory.find({ tags: ["red", "blank"] });
-  return res.send(data);
-});
-
-//? $all operator : find an array that contains both the elements "red" and "blank", without regard to order or other elements in the array
-
-router.get("/not-exact", async (req, res) => {
-  const data = await Inventory.find({ tags: { $all: ["red", "blank"] } });
-  return res.send(data);
-});
-
-//? Query an Array for an Element
-// where tags is an array that contains the string "red" as one of its elements:
-
-router.get("/element", async (req, res) => {
-  const data = await Inventory.find({ tags: ["red"] });
-  return res.send(data);
-});
 
 module.exports = router;
