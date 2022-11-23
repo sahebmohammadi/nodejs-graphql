@@ -4,7 +4,7 @@ const ObjectId = Schema.Types.ObjectId;
 
 const BookSchema = new Schema({
   title: { type: String, requored: true },
-  genere: { type: String, required: true },
+  genre: { type: String, required: true },
   authorId: {
     type: ObjectId,
     ref: "Author",
