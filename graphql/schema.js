@@ -8,6 +8,7 @@ const {
   GraphQLInt,
   GraphQLList,
   GraphQLID,
+  GraphQLNonNull,
 } = require("graphql");
 
 // 1. create schema type
@@ -82,8 +83,8 @@ const Mutation = new GraphQLObjectType({
     addAuthor: {
       type: AuthorType,
       args: {
-        name: { type: GraphQLString },
-        age: { type: GraphQLInt },
+        name: { type: new GraphQLNonNull(GraphQLString) },
+        age: { type: new GraphQLNonNull(GraphQLInt) },
       },
       resolve(parent, args) {
         const author = new Author({
@@ -96,9 +97,9 @@ const Mutation = new GraphQLObjectType({
     addBook: {
       type: BookType,
       args: {
-        title: { type: GraphQLString },
-        genre: { type: GraphQLString },
-        authorId: { type: GraphQLString },
+        title: { type: new GraphQLNonNull(GraphQLString) },
+        genre: { type: new GraphQLNonNull(GraphQLString) },
+        authorId: { type: new GraphQLNonNull(GraphQLString) },
       },
       resolve(parent, args) {
         const newBook = new Book({
