@@ -1,3 +1,4 @@
+const { GraphQLObjectType, GraphQLSchema } = require("graphql");
 const addAuthorResolver = require("./mutations/addAuthor.resolver");
 const addBookResolver = require("./mutations/addBook.resolver");
 const authorResolver = require("./queries/author.resolver");
@@ -6,7 +7,7 @@ const bookResolver = require("./queries/book.resolver");
 const booksResolver = require("./queries/books.resolver");
 
 const RootQuery = new GraphQLObjectType({
-  name: "RootQueryType",
+  name: "RootQuery",
   fields: {
     book: bookResolver,
     author: authorResolver,
@@ -16,7 +17,7 @@ const RootQuery = new GraphQLObjectType({
 });
 
 const RootMutation = new GraphQLObjectType({
-  name: "Mutation",
+  name: "RootMutation",
   fields: {
     addAuthor: addAuthorResolver,
     addBook: addBookResolver,
