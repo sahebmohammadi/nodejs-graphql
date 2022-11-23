@@ -3,13 +3,13 @@ const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const utils = require("./utils");
 const { graphqlHTTP } = require("express-graphql");
-const schema = require("./graphql/schema");
 
 const app = express();
 dotenv.config();
 
 const inventoryRouter = require("./routes/inventory");
 const productRouter = require("./routes/product");
+const graphQLSchema = require("./graphql/index.graphql");
 
 app.use(express.json()); // parses application/json
 app.use(express.urlencoded({ extended: true })); // parses application/
@@ -19,7 +19,7 @@ app.use("/api/product", productRouter);
 app.use(
   "/graphql",
   graphqlHTTP({
-    schema: schema,
+    schema: graphQLSchema,
     graphiql: true,
   })
 );
