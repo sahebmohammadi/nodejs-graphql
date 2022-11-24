@@ -1,7 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
-const utils = require("./utils");
+const mongooseQuery = require("./mongoose/mongoose.query");
 const { allRoutes } = require("./routes/routes");
 
 const app = express();

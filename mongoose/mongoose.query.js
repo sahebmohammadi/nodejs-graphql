@@ -1,5 +1,5 @@
-const Inventory = require("./models/inventory");
-const Product = require("./models/product");
+const Inventory = require("../models/inventory");
+const Product = require("../models/product");
 
 class QueryArray {
   //? match array :
