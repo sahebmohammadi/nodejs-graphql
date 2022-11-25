@@ -3,8 +3,10 @@ const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const mongooseQuery = require("./mongoose/mongoose.query");
 const { allRoutes } = require("./routes/routes");
+const cors = require("cors");
 
 const app = express();
+app.use(cors());
 dotenv.config();
 
 app.use(express.json()); // parses application/json
